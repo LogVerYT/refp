@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05040a" />
+    <title>Minecraft Мини-игры | LogVer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader" aria-label="Загрузка" role="status">
+      <div class="preloader__ring" aria-hidden="true"></div>
+      <div class="preloader__text">Загрузка...</div>
+    </div>
+
+    <!-- Animated background (grid + glow) -->
+    <div class="bg" aria-hidden="true">
+      <div class="bg__grid"></div>
+      <div class="bg__glow bg__glow--a"></div>
+      <div class="bg__glow bg__glow--b"></div>
+      <div class="bg__glow bg__glow--c"></div>
+    </div>
+
+    <header class="header" id="top">
+      <div class="container header__inner">
+        <a class="logo" href="#home" data-nav="home" aria-label="На главную">
+          <span class="logo__mark" aria-hidden="true">⌬</span>
+          <span class="logo__text">LogVer</span>
+        </a>
+
+        <nav class="nav" aria-label="Навигация">
+          <a class="nav__link" href="#home" data-nav="home">Главная</a>
+          <a class="nav__link" href="#games" data-nav="games">Режимы</a>
+          <a class="nav__link" href="#leaderboard" data-nav="leaderboard">Таблица лидеров</a>
+          <a class="nav__link" href="#donate" data-nav="donate">Донат</a>
+          <a class="nav__link" href="#contacts" data-nav="contacts">Контакты</a>
+        </nav>
+
+        <div class="header__actions">
+          <button
+            class="btn btn--copy"
+            type="button"
+            id="copyIpBtn"
+            data-action="copy-ip"
+            aria-label="Скопировать IP"
+          >
+            <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-copy"></i></span>
+            <span class="btn__text">Скопировать IP</span>
+            <span class="btn__pulse" aria-hidden="true"></span>
+          </button>
+
+          <button
+            class="burger"
+            type="button"
+            id="burgerBtn"
+            aria-label="Открыть меню"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <span class="burger__lines" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile" id="mobileMenu" hidden>
+        <div class="container mobile__inner">
+          <div class="mobile__links" aria-label="Меню на мобильном">
+            <a class="nav__link" href="#home" data-nav="home">Главная</a>
+            <a class="nav__link" href="#games" data-nav="games">Режимы</a>
+            <a class="nav__link" href="#leaderboard" data-nav="leaderboard">Таблица лидеров</a>
+            <a class="nav__link" href="#donate" data-nav="donate">Донат</a>
+            <a class="nav__link" href="#contacts" data-nav="contacts">Контакты</a>
+          </div>
+
+          <button
+            class="btn btn--copy btn--copy--mobile"
+            type="button"
+            data-action="copy-ip"
+          >
+            <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-copy"></i></span>
+            <span class="btn__text">Скопировать IP</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section id="home" class="section hero" data-section="home">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <div class="badge">
+              <span class="badge__dot" aria-hidden="true"></span>
+              <span class="badge__text">Классические мини-игры на высоком уровне</span>
+            </div>
+
+            <h1 class="hero__title">
+              Minecraft Мини-игры
+              <span class="hero__titleAccent">LogVer</span>
+            </h1>
+
+            <p class="hero__subtitle">
+              BedWars • SkyWars • Murder Mystery • SkyPVP. Динамика, баланс и турниры — всё
+              настроено под честную игру.
+            </p>
+
+            <div class="hero__cta">
+              <button class="btn btn--primary" type="button" data-action="copy-ip">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                <span class="btn__text">Начать играть</span>
+              </button>
+
+              <button class="btn btn--ghost" type="button" data-action="scroll-to-games">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="btn__text">Выбрать режим</span>
+              </button>
+            </div>
+
+            <div class="hero__stats">
+              <div class="stat">
+                <div class="stat__value" id="globalOnlineValue">2000</div>
+                <div class="stat__label">Игроков онлайн (в сумме)</div>
+              </div>
+              <div class="stat stat--small">
+                <div class="stat__value">500</div>
+                <div class="stat__label">Онлайн в каждом режиме</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__card" aria-label="Динамический фон и подсказки">
+            <div class="hero__videoFallback" aria-hidden="true"></div>
+            <div class="hero__cardInner">
+              <h3 class="hero__cardTitle">Готов к матчу?</h3>
+              <p class="hero__cardText">
+                Нажми «Скопировать IP», вставь в Minecraft и выбирай режим. Уведомления появятся
+                сразу.
+              </p>
+              <div class="hero__quick">
+                <div class="chip"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Античит</div>
+                <div class="chip"><i class="fa-solid fa-headset" aria-hidden="true"></i> 24/7 поддержка</div>
+                <div class="chip"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Регулярные турниры</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Games -->
+      <section id="games" class="section section--tight games" data-section="games">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionHead__title">Режимы</h2>
+            <p class="sectionHead__subtitle">Выбирай мини-игру — и игровой импульс уже в пути.</p>
+          </div>
+
+          <div class="cardsGrid" role="list" aria-label="Карточки режимов">
+            <article class="gameCard" role="listitem" tabindex="0" data-mode="BedWars">
+              <div class="gameCard__top">
+                <div class="gameCard__icon" aria-hidden="true">🛡️</div>
+                <div class="gameCard__name">BedWars</div>
+              </div>
+              <div class="gameCard__meta">
+                <div class="miniStat">
+                  <div class="miniStat__value">500</div>
+                  <div class="miniStat__label">онлайн сейчас</div>
+                </div>
+              </div>
+              <button class="btn btn--primary btn--card" type="button" data-action="play" data-mode="BedWars">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-gun"></i></span>
+                <span class="btn__text">Играть</span>
+              </button>
+            </article>
+
+            <article class="gameCard" role="listitem" tabindex="0" data-mode="SkyWars">
+              <div class="gameCard__top">
+                <div class="gameCard__icon" aria-hidden="true">☁️</div>
+                <div class="gameCard__name">SkyWars</div>
+              </div>
+              <div class="gameCard__meta">
+                <div class="miniStat">
+                  <div class="miniStat__value">500</div>
+                  <div class="miniStat__label">онлайн сейчас</div>
+                </div>
+              </div>
+              <button class="btn btn--primary btn--card" type="button" data-action="play" data-mode="SkyWars">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
+                <span class="btn__text">Играть</span>
+              </button>
+            </article>
+
+            <article class="gameCard" role="listitem" tabindex="0" data-mode="Murder Mystery">
+              <div class="gameCard__top">
+                <div class="gameCard__icon" aria-hidden="true">🕵️</div>
+                <div class="gameCard__name">Murder Mystery</div>
+              </div>
+              <div class="gameCard__meta">
+                <div class="miniStat">
+                  <div class="miniStat__value">500</div>
+                  <div class="miniStat__label">онлайн сейчас</div>
+                </div>
+              </div>
+              <button class="btn btn--primary btn--card" type="button" data-action="play" data-mode="Murder Mystery">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span class="btn__text">Играть</span>
+              </button>
+            </article>
+
+            <article class="gameCard" role="listitem" tabindex="0" data-mode="SkyPVP">
+              <div class="gameCard__top">
+                <div class="gameCard__icon" aria-hidden="true">⚡</div>
+                <div class="gameCard__name">SkyPVP</div>
+              </div>
+              <div class="gameCard__meta">
+                <div class="miniStat">
+                  <div class="miniStat__value">500</div>
+                  <div class="miniStat__label">онлайн сейчас</div>
+                </div>
+              </div>
+              <button class="btn btn--primary btn--card" type="button" data-action="play" data-mode="SkyPVP">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-crosshairs"></i></span>
+                <span class="btn__text">Играть</span>
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="section features" data-section="features">
+        <div class="container">
+          <div class="sectionHead sectionHead--center">
+            <h2 class="sectionHead__title">Преимущества</h2>
+            <p class="sectionHead__subtitle">Комфорт и зрелищность — по умолчанию.</p>
+          </div>
+
+          <div class="featuresGrid" role="list" aria-label="Преимущества сервера">
+            <div class="feature" role="listitem">
+              <div class="feature__icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="feature__title">Античит</div>
+              <div class="feature__text">Наблюдение за аномалиями и защита справедливых боёв.</div>
+            </div>
+            <div class="feature" role="listitem">
+              <div class="feature__icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></div>
+              <div class="feature__title">24/7 поддержка</div>
+              <div class="feature__text">Команда быстро реагирует на вопросы и проблемы.</div>
+            </div>
+            <div class="feature" role="listitem">
+              <div class="feature__icon" aria-hidden="true"><i class="fa-solid fa-gem"></i></div>
+              <div class="feature__title">Бесплатные донат-привилегии</div>
+              <div class="feature__text">Тестовые бонусы для новых игроков. Скоро будет больше.</div>
+            </div>
+            <div class="feature" role="listitem">
+              <div class="feature__icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
+              <div class="feature__title">Регулярные турниры</div>
+              <div class="feature__text">Сезонные ивенты с наградами и яркой сеткой.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leaderboard -->
+      <section id="leaderboard" class="section section--tight leaderboard" data-section="leaderboard">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionHead__title">Таблица лидеров</h2>
+            <p class="sectionHead__subtitle">Топ-5 убийств (тестовые данные). Переключай режимы.</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Табы лидеров">
+            <button class="tab tab--active" type="button" role="tab" aria-selected="true" data-leader-tab="BedWars">
+              BedWars
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-leader-tab="SkyWars">
+              SkyWars
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-leader-tab="Murder Mystery">
+              Murder Mystery
+            </button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-leader-tab="SkyPVP">
+              SkyPVP
+            </button>
+          </div>
+
+          <div class="leaderCard">
+            <div class="leaderCard__head">
+              <div class="leaderCard__title">
+                <i class="fa-solid fa-ranking-star" aria-hidden="true"></i>
+                <span>Убийства</span>
+              </div>
+              <div class="leaderCard__mode" id="leaderModeLabel">BedWars</div>
+            </div>
+
+            <div class="tableWrap" tabindex="0" aria-label="Таблица лидеров">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="th th--rank">#</th>
+                    <th class="th">Игрок</th>
+                    <th class="th th--kills">Убийства</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderTbody">
+                  <!-- JS fills -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Donate -->
+      <section id="donate" class="section donate" data-section="donate">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionHead__title">Донат</h2>
+            <p class="sectionHead__subtitle">Магазин временно недоступен, но карточки готовы.</p>
+          </div>
+
+          <div class="donateGrid">
+            <div class="donateBlock">
+              <div class="donateBlock__title"><i class="fa-solid fa-store" aria-hidden="true"></i> Скоро открытие магазина</div>
+              <div class="donateBlock__text">
+                Сейчас это заглушка. В будущем тут появятся разделы с покупками, наградами и
+                бонусами.
+              </div>
+              <button class="btn btn--ghost btn--full" type="button" data-action="donate-info">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-circle-info"></i></span>
+                <span class="btn__text">Узнать о донате</span>
+              </button>
+            </div>
+
+            <div class="donateCard" aria-label="Тестовые привилегии">
+              <div class="donateCard__glow" aria-hidden="true"></div>
+              <div class="donateCard__inner">
+                <div class="donateCard__plan">VIP</div>
+                <div class="donateCard__price">Тестовые привилегии</div>
+                <ul class="donateList">
+                  <li><i class="fa-solid fa-check" aria-hidden="true"></i> VIP-ранг в чате</li>
+                  <li><i class="fa-solid fa-check" aria-hidden="true"></i> Приоритет в очереди</li>
+                  <li><i class="fa-solid fa-check" aria-hidden="true"></i> Неоновый ник (тест)</li>
+                  <li><i class="fa-solid fa-check" aria-hidden="true"></i> Турнирные бонусы</li>
+                </ul>
+
+                <div class="donateCard__row">
+                  <div class="miniBadge">MVP</div>
+                  <div class="miniBadge miniBadge--alt">ELITE</div>
+                </div>
+
+                <div class="donateCard__hint">
+                  Нажми кнопку слева — покажем уведомление «Магазин в разработке».
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacts -->
+      <section id="contacts" class="section contacts" data-section="contacts">
+        <div class="container">
+          <div class="sectionHead sectionHead--center">
+            <h2 class="sectionHead__title">Контакты</h2>
+            <p class="sectionHead__subtitle">Связаться и следить за новостями (тестово).</p>
+          </div>
+
+          <div class="contactsGrid">
+            <div class="contactCard">
+              <div class="contactCard__icon" aria-hidden="true"><i class="fa-brands fa-discord"></i></div>
+              <div class="contactCard__title">Discord</div>
+              <div class="contactCard__text">Чат сервера и обновления (без ссылок в демо).</div>
+              <button class="btn btn--ghost btn--small" type="button" data-action="notify" data-notify="Discord скоро появится!">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-bell"></i></span>
+                <span class="btn__text">Пинг</span>
+              </button>
+            </div>
+            <div class="contactCard">
+              <div class="contactCard__icon" aria-hidden="true"><i class="fa-brands fa-telegram"></i></div>
+              <div class="contactCard__title">Telegram</div>
+              <div class="contactCard__text">Анонсы турниров и патчей (тестовые данные).</div>
+              <button class="btn btn--ghost btn--small" type="button" data-action="notify" data-notify="Telegram-канал в разработке.">
+                <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-bell"></i></span>
+                <span class="btn__text">Уведомить</span>
+              </button>
+            </div>
+            <div class="contactCard contactCard--wide">
+              <div class="contactCard__title">IP сервера</div>
+              <div class="ipRow">
+                <div class="ipRow__value" id="ipValue">play.logver.net</div>
+                <button class="btn btn--primary btn--small" type="button" data-action="copy-ip">
+                  <span class="btn__icon" aria-hidden="true"><i class="fa-solid fa-copy"></i></span>
+                  <span class="btn__text">Копировать</span>
+                </button>
+              </div>
+              <div class="contactCard__text">Если кнопки выше не работают — просто вручную вставь IP.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__title">LogVer</div>
+          <div class="footer__muted">Классические мини-игры на высоком уровне</div>
+        </div>
+
+        <div class="footer__mid">
+          <div class="footer__sectionTitle">Социальные сети</div>
+          <div class="socialRow">
+            <button class="socialBtn" type="button" aria-label="Twitter" data-action="notify" data-notify="Социальные ссылки скоро добавим.">
+              <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+            </button>
+            <button class="socialBtn" type="button" aria-label="VK" data-action="notify" data-notify="VK-ссылка в разработке.">
+              <i class="fa-brands fa-vk" aria-hidden="true"></i>
+            </button>
+            <button class="socialBtn" type="button" aria-label="YouTube" data-action="notify" data-notify="YouTube-канал скоро появится.">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="footer__right">
+          <div class="footer__sectionTitle">IP</div>
+          <div class="footer__ip">
+            <span class="footer__ipValue">play.logver.net</span>
+            <button class="linkBtn" type="button" data-action="copy-ip" data-copy-kind="footer">
+              Копировать
+            </button>
+          </div>
+          <div class="footer__copy">© <span id="year"></span> LogVer. Все права защищены.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toasts -->
+    <div id="toastWrap" class="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
